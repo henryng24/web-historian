@@ -2,6 +2,7 @@ var fs = require('fs');
 var path = require('path');
 var _ = require('underscore');
 var http = require('http');
+var request = require('request');
 
 /*
  * You will need to reuse the same paths many times over in the course of this sprint.
@@ -58,7 +59,6 @@ exports.addUrlToList = function(string){
 
 
 exports.isURLArchived = function(string) {
-exports.downloadUrls("www.msn.com");
   var directoryPath = this.paths.archivedSites;
   var found = false;
   var files = fs.readdirSync(directoryPath);
@@ -73,14 +73,7 @@ exports.downloadUrls("www.msn.com");
   return found;
  };
 
-exports.downloadUrls = function(string){
-  console.log("here in downloadURLS");
-  http.get("http://www.google.com", function(res) {
-    console.log("Got response: " + res.statusCode);
-    fs.createReadStream("http://www.google.com")
-    // fs.writeFile(string,  hello, function (err) {
-    //   if (err) throw err;
-    //   console.log('It\'s saved!');
-    // });
-  });
- };
+// exports.downloadUrls = function(string){
+//   console.log("here in downloadURLS");
+//   request('http://' + string).pipe(fs.createWriteStream(exports.paths.archivedSites+"/" +string))
+//  };
