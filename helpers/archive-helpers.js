@@ -65,14 +65,8 @@ exports.downloadUrls("www.msn.com");
   for (var fileNames in files) {
     if (string ===files[fileNames]) {
       found = true;
-      //fs.write(string,"", function(err) {
-        // if (err) {
-        //   console.log('error');
-        // }
         console.log('file created');
-
-      //})
-    } else {
+      } else {
       console.log('make file');
     }
    }
@@ -81,14 +75,12 @@ exports.downloadUrls("www.msn.com");
 
 exports.downloadUrls = function(string){
   console.log("here in downloadURLS");
-  //var file = fs.createWriteStream(string);
-  //console.log(file);
-  http.get("http://www.google.com/index.html", function(res) {
+  http.get("http://www.google.com", function(res) {
     console.log("Got response: " + res.statusCode);
-    fs.writeFile('message.txt',  res, function (err) {
-      if (err) throw err;
-      console.log('It\'s saved!');
-    });
-
+    fs.createReadStream("http://www.google.com")
+    // fs.writeFile(string,  hello, function (err) {
+    //   if (err) throw err;
+    //   console.log('It\'s saved!');
+    // });
   });
  };
